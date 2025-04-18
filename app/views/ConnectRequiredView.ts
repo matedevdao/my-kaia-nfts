@@ -1,4 +1,4 @@
-import { BodyNode, el, View } from "@commonmodule/app";
+import { BodyNode, el, Router, View } from "@commonmodule/app";
 import { Button, ButtonType } from "@commonmodule/app-components";
 import { KaiaWalletSessionManager } from "kaia-wallet-module";
 
@@ -12,8 +12,13 @@ export default class ConnectRequiredView extends View {
       new Button({
         type: ButtonType.Contained,
         title: "지갑 연결",
-        onClick: () => KaiaWalletSessionManager.connect(),
+        onClick: async () => {
+          await KaiaWalletSessionManager.connect();
+          Router.go("/");
+        },
       }),
     ).appendTo(BodyNode);
+
+    if (KaiaWalletSessionManager.isConnected()) Router.goWithoutHistory("/");
   }
 }
