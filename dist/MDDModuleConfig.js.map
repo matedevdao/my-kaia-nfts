@@ -1,0 +1,1 @@
+{"version":3,"file":"MDDModuleConfig.js","sourceRoot":"","sources":["../app/MDDModuleConfig.ts"],"names":[],"mappings":"AAAA,OAAO,EAAE,sBAAsB,EAAE,MAAM,oBAAoB,CAAC;AAE5D,MAAM,eAAe;IACZ,IAAI,CAAC,OAA4B;QACtC,sBAAsB,CAAC,IAAI,CAAC;YAC1B,GAAG,OAAO;YACV,sBAAsB,EAAE,kCAAkC;SAC3D,CAAC,CAAC;IACL,CAAC;CACF;AAED,eAAe,IAAI,eAAe,EAAE,CAAC"}

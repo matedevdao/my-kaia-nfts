@@ -1,3 +1,5 @@
 import { MDDModuleConfig } from "matedevdao-common";
 
-MDDModuleConfig.init();
+MDDModuleConfig.init({
+  appName: "My Kaia NFTs",
+});
