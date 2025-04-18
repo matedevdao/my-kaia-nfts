@@ -8,6 +8,8 @@ export default class HomeView extends View {
 
     if (!KaiaWalletSessionManager.isConnected()) {
       Router.goWithoutHistory("/connect-required");
+    } else {
+      //TODO: Add your home view content here
     }
   }
 }
