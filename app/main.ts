@@ -1,4 +1,4 @@
-import { BodyNode } from "@common-module/app";
+import { BodyNode } from "@commonmodule/app";
 import { HoldingNFTList, MDDModuleConfig } from "matedevdao-common";
 
 MDDModuleConfig.init();
