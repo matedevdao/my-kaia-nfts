@@ -1,5 +1,6 @@
 import { BodyNode, el, Router, View } from "@commonmodule/app";
 import { KaiaWalletSessionManager } from "kaia-wallet-module";
+import { HoldingNFTList } from "matedevdao-common";
 export default class HomeView extends View {
     constructor() {
         super();
@@ -8,6 +9,7 @@ export default class HomeView extends View {
             Router.goWithoutHistory("/connect-required");
         }
         else {
+            this.container.append(new HoldingNFTList("0x8033cEB86c71EbBF575fF7015FcB8F1689d90aC1"));
         }
     }
 }
