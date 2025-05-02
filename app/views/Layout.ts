@@ -19,6 +19,7 @@ export default class Layout extends View {
       ".layout",
       el(
         "header",
+        el("h1", el("a", "My Kaia NFTs", { onclick: () => Router.go("/") })),
         el(
           ".button-container",
           new Button({

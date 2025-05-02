@@ -1,0 +1,135 @@
+.layout {
+  >header {
+    position        : sticky;
+    top             : 0;
+    z-index         : 10;
+    background-color: var(--page-bg-color);
+
+    border-bottom  : 1px solid var(--line-color);
+    padding        : 0 30px;
+    height         : 70px;
+    display        : flex;
+    align-items    : center;
+    justify-content: space-between;
+
+    >h1 {
+      font-size  : 24px;
+      font-weight: 600;
+    }
+
+    @container (width < @phone-width) {
+      padding: 20px;
+    }
+  }
+
+  >main {
+    max-width: 1200px;
+    margin   : 0 auto;
+    padding  : 60px 30px;
+
+    display       : flex;
+    flex-direction: column;
+    gap           : 60px;
+
+    @container (width < @phone-width) {
+      padding: 40px 20px;
+      gap    : 40px;
+    }
+
+    section {
+      display       : flex;
+      flex-direction: column;
+      gap           : 16px;
+
+      .asterisk {
+        color    : var(--secondary-text-color);
+        font-size: 14px;
+      }
+    }
+
+    .services {
+      >h2 {
+        font-size  : 24px;
+        font-weight: 600;
+      }
+
+      ul {
+        display              : grid;
+        grid-template-columns: repeat(2, 1fr);
+
+        column-gap: 24px;
+
+        @container (width < 800px) {
+          grid-template-columns: 1fr;
+        }
+
+        >li {
+          display    : flex;
+          align-items: center;
+          gap        : 24px;
+
+          border-top   : 1px solid var(--line-color);
+          border-bottom: 1px solid var(--line-color);
+
+          margin-bottom: -1px;
+
+          padding: 16px 16px 16px 0;
+
+          @container (width < @phone-width) {
+            padding: 16px 0;
+          }
+
+          >.info {
+            flex-grow     : 1;
+            display       : flex;
+            flex-direction: column;
+            gap           : 8px;
+
+            >h3 {
+              font-weight: 600;
+
+              @container (width < @phone-width) {
+                font-size: 14px;
+              }
+            }
+
+            >p {
+              color    : var(--secondary-text-color);
+              font-size: 14px;
+
+              @container (width < @phone-width) {
+                font-size: 12px;
+              }
+            }
+          }
+        }
+      }
+
+      img {
+        width        : 68px;
+        height       : 68px;
+        border-radius: 16px;
+      }
+    }
+  }
+
+  >footer {
+    border-top     : 1px solid var(--line-color);
+    max-width      : 1200px;
+    margin         : 0 auto;
+    padding        : 22px 30px;
+    display        : flex;
+    justify-content: space-between;
+    padding-bottom : 120px;
+
+    @container (width < @phone-width) {
+      padding       : 20px;
+      padding-bottom: 80px;
+    }
+
+    >.social {
+      display: flex;
+      gap    : 8px;
+    }
+  }
+}

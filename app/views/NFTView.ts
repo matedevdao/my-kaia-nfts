@@ -1,4 +1,5 @@
 import { el, Router, View } from "@commonmodule/app";
+import { AppCompConfig } from "@commonmodule/app-components";
 import { KaiaWalletSessionManager } from "kaia-wallet-module";
 import { NFTDisplay } from "matedevdao-common";
 import NFTData from "matedevdao-common/lib/nft/NFTData.js";
@@ -24,7 +25,14 @@ export default class NFTView extends View {
   }
 
   private async fetchNFTData(collection: string, id: number) {
-    console.log("Fetching NFT data...", collection, id);
-    //TODO:
+    const loadingSpinner = new AppCompConfig.LoadingSpinner().appendTo(
+      this.container,
+    );
+    const response = await fetch(
+      `https://api.matedevdao.workers.dev/nft/${collection}/${id}`,
+    );
+    const data = await response.json();
+    this.renderNFTDisplay(data);
+    loadingSpinner.remove();
   }
 }
