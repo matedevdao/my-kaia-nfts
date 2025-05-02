@@ -26,7 +26,7 @@ export default class Layout extends View {
             title: "Disconnect Wallet",
             onClick: () => {
               KaiaWalletSessionManager.disconnect();
-              Router.go("/connect-required");
+              Router.go("/loign-required");
             },
           }),
         ),

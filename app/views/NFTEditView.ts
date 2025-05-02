@@ -7,7 +7,7 @@ import Layout from "./Layout.js";
 export default class NFTEditView extends View {
   public changeData(data: { collection: string; id: string } | NFTData): void {
     if (!KaiaWalletSessionManager.isConnected()) {
-      Router.goWithoutHistory("/connect-required");
+      Router.goWithoutHistory("/loign-required");
     } else {
       Layout.setContent(this.container = el(".nft-edit-view"));
       "name" in data

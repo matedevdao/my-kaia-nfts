@@ -474,6 +474,17 @@ dialog.modal.structured-modal > footer {
 .connect-required-view > h1 {
   font-size: 24px;
 }
+.login-required-view {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+}
+.login-required-view > h1 {
+  font-size: 24px;
+}
 .layout > header {
   position: sticky;
   top: 0;

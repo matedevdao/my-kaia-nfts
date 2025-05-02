@@ -10,11 +10,11 @@ export default class Layout extends View {
     constructor() {
         super();
         Layout._current = this;
-        this.container = el(".layout", el("header", el(".button-container", new Button({
+        this.container = el(".layout", el("header", el("h1", el("a", "My Kaia NFTs", { onclick: () => Router.go("/") })), el(".button-container", new Button({
             title: "Disconnect Wallet",
             onClick: () => {
                 KaiaWalletSessionManager.disconnect();
-                Router.go("/connect-required");
+                Router.go("/loign-required");
             },
         }))), this.contentContainer = el("main")).appendTo(BodyNode);
     }

@@ -6,7 +6,9 @@
   },
   "type": "module",
   "dependencies": {
+    "@commonmodule/social-components": "^0.1.7",
     "@resvg/resvg-wasm": "^2.6.2",
+    "kaia-wallet-login-module": "^0.0.2",
     "matedevdao-common": "^0.0.2"
   },
   "devDependencies": {

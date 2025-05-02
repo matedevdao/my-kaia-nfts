@@ -6,10 +6,12 @@ export default class HomeView extends View {
     constructor() {
         super();
         if (!KaiaWalletSessionManager.isConnected()) {
-            Router.goWithoutHistory("/connect-required");
+            Router.goWithoutHistory("/loign-required");
         }
         else {
-            Layout.setContent(this.container = el(".home-view", new HoldingNFTList(KaiaWalletSessionManager.getConnectedAddress())));
+            const nftList = new HoldingNFTList(KaiaWalletSessionManager.getConnectedAddress());
+            nftList.on("selectNFT", (nftData) => Router.go(`/${nftData.collection}/${nftData.id}`, nftData));
+            Layout.setContent(this.container = el(".home-view", nftList));
         }
     }
 }
