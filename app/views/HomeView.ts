@@ -1,4 +1,4 @@
-import { BodyNode, el, Router, View } from "@commonmodule/app";
+import { el, Router, View } from "@commonmodule/app";
 import { KaiaWalletSessionManager } from "kaia-wallet-module";
 import { HoldingNFTList } from "matedevdao-common";
 import Layout from "./Layout.js";
@@ -9,12 +9,14 @@ export default class HomeView extends View {
     if (!KaiaWalletSessionManager.isConnected()) {
       Router.goWithoutHistory("/connect-required");
     } else {
-      Layout.setContent(
-        this.container = el(
-          ".home-view",
-          new HoldingNFTList(KaiaWalletSessionManager.getConnectedAddress()!),
-        ),
+      const nftList = new HoldingNFTList(
+        KaiaWalletSessionManager.getConnectedAddress()!,
       );
+      nftList.on(
+        "selectNFT",
+        (nftData) => Router.go(`/${nftData.collection}/${nftData.id}`, nftData),
+      );
+      Layout.setContent(this.container = el(".home-view", nftList));
     }
   }
 }
