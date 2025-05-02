@@ -429,6 +429,10 @@ dialog.modal.structured-modal > footer {
   width: 40px;
   height: 40px;
 }
+@font-face {
+  font-family: neodgm;
+  src: url("https://matedevdao.github.io/static-kaia-nft-assets/sigor-sparrows/fonts/neodgm.woff2") format("woff2");
+}
 .kaia-nft-display > img {
   width: 100%;
   height: 100%;
@@ -441,6 +445,18 @@ dialog.modal.structured-modal > footer {
   display: grid;
   grid-template-columns: repeat(auto-fill, minmax(128px, 1fr));
   gap: 13.5px;
+}
+.sigor-sparrow-preview {
+  position: relative;
+}
+.sigor-sparrow-preview > .dialogue {
+  position: absolute;
+  left: 50%;
+  top: 21%;
+  transform: translate(-50%, -50%);
+  font-family: neodgm;
+  color: #000;
+  font-size: 8px;
 }
 .connect-required-view {
   display: flex;
