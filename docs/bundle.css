@@ -437,6 +437,11 @@ dialog.modal.structured-modal > footer {
 .kaia-nft-display > img.pixel-art {
   image-rendering: pixelated;
 }
+.nft-list {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(128px, 1fr));
+  gap: 13.5px;
+}
 .connect-required-view {
   display: flex;
   flex-direction: column;
