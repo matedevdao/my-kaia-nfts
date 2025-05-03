@@ -1,16 +1,16 @@
 import { el, Router, View } from "@commonmodule/app";
-import { KaiaWalletSessionManager } from "kaia-wallet-module";
+import { KaiaWalletLoginManager } from "kaia-wallet-login-module";
 import { HoldingNFTList } from "matedevdao-common";
 import Layout from "./Layout.js";
 
 export default class HomeView extends View {
   constructor() {
     super();
-    if (!KaiaWalletSessionManager.isConnected()) {
+    if (!KaiaWalletLoginManager.isLoggedIn()) {
       Router.goWithoutHistory("/loign-required");
     } else {
       const nftList = new HoldingNFTList(
-        KaiaWalletSessionManager.getConnectedAddress()!,
+        KaiaWalletLoginManager.getLoggedInAddress()!,
       );
       nftList.on(
         "selectNFT",

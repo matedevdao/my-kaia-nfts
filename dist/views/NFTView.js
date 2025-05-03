@@ -1,11 +1,11 @@
 import { el, Router, View } from "@commonmodule/app";
 import { AppCompConfig } from "@commonmodule/app-components";
-import { KaiaWalletSessionManager } from "kaia-wallet-module";
+import { KaiaWalletLoginManager } from "kaia-wallet-login-module";
 import { NFTDisplay } from "matedevdao-common";
 import Layout from "./Layout.js";
 export default class NFTView extends View {
     changeData(data) {
-        if (!KaiaWalletSessionManager.isConnected()) {
+        if (!KaiaWalletLoginManager.isLoggedIn()) {
             Router.goWithoutHistory("/loign-required");
         }
         else {

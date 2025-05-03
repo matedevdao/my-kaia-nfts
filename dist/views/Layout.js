@@ -1,6 +1,6 @@
 import { BodyNode, el, Router, View } from "@commonmodule/app";
-import { Button } from "@commonmodule/app-components";
-import { KaiaWalletSessionManager } from "kaia-wallet-module";
+import { LoggedInUserAvatarButton } from "@commonmodule/social-components";
+import { KaiaWalletLoginManager } from "kaia-wallet-login-module";
 export default class Layout extends View {
     static _current;
     static setContent(content) {
@@ -10,13 +10,7 @@ export default class Layout extends View {
     constructor() {
         super();
         Layout._current = this;
-        this.container = el(".layout", el("header", el("h1", el("a", "My Kaia NFTs", { onclick: () => Router.go("/") })), el(".button-container", new Button({
-            title: "Disconnect Wallet",
-            onClick: () => {
-                KaiaWalletSessionManager.disconnect();
-                Router.go("/loign-required");
-            },
-        }))), this.contentContainer = el("main")).appendTo(BodyNode);
+        this.container = el(".layout", el("header", el("h1", el("a", "My Kaia NFTs", { onclick: () => Router.go("/") })), el(".button-container", new LoggedInUserAvatarButton(KaiaWalletLoginManager))), this.contentContainer = el("main")).appendTo(BodyNode);
     }
 }
 //# sourceMappingURL=Layout.js.map
