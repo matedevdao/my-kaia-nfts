@@ -6,7 +6,6 @@
   },
   "type": "module",
   "dependencies": {
-    "@resvg/resvg-wasm": "^2.6.2",
     "matedevdao-common": "^0.0.2"
   },
   "devDependencies": {
