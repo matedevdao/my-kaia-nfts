@@ -7,5 +7,6 @@ export default class NFTEditView extends View {
     } | NFTData): void;
     private renderNFTEditForm;
     private fetchNFTData;
+    saveChanges(): Promise<void>;
 }
 //# sourceMappingURL=NFTEditView.d.ts.map

@@ -1,5 +1,5 @@
 import { el, Router, View } from "@commonmodule/app";
-import { AppCompConfig } from "@commonmodule/app-components";
+import { AppCompConfig, Button, ConfirmDialog, } from "@commonmodule/app-components";
 import { KaiaWalletLoginManager } from "kaia-wallet-login-module";
 import { getNFTEditForm } from "matedevdao-common";
 import Layout from "./Layout.js";
@@ -17,7 +17,16 @@ export default class NFTEditView extends View {
     }
     async renderNFTEditForm(nftData) {
         const form = getNFTEditForm(nftData);
-        this.container.append(form);
+        this.container.append(form, new Button({
+            title: "저장하기",
+            onClick: async () => {
+                await new ConfirmDialog({
+                    title: "저장하기",
+                    message: "변경사항을 저장하시겠습니까?",
+                    onConfirm: () => this.saveChanges(),
+                }).waitForConfirmation();
+            },
+        }));
     }
     async fetchNFTData(collection, id) {
         const loadingSpinner = new AppCompConfig.LoadingSpinner().appendTo(this.container);
@@ -25,6 +34,8 @@ export default class NFTEditView extends View {
         const data = await response.json();
         this.renderNFTEditForm(data);
         loadingSpinner.remove();
+    }
+    async saveChanges() {
     }
 }
 //# sourceMappingURL=NFTEditView.js.map
