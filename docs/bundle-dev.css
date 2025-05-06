@@ -438,6 +438,42 @@ dialog.modal.structured-modal > footer {
   font-family: neodgm;
   src: url("https://matedevdao.github.io/static-kaia-nft-assets/sigor-sparrows/fonts/neodgm.woff2") format("woff2");
 }
+.nft-attribute-editor > .accordion > .accordion-item > .content > .option-list {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 12px;
+}
+@container (width <= 1000px) {
+  .nft-attribute-editor > .accordion > .accordion-item > .content > .option-list {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+@container (width <= 520px) {
+  .nft-attribute-editor > .accordion > .accordion-item > .content > .option-list {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+.nft-attribute-editor > .accordion > .accordion-item > .content > .option-list > .option-list-item {
+  position: relative;
+  aspect-ratio: 1;
+  border-radius: 8px;
+}
+.nft-attribute-editor > .accordion > .accordion-item > .content > .option-list > .option-list-item > .value {
+  position: absolute;
+  left: 12px;
+  bottom: 12px;
+  z-index: 1;
+}
+.nft-attribute-editor > .accordion > .accordion-item > .content > .option-list > .option-list-item > .checkbox {
+  position: absolute;
+  right: 12px;
+  top: 12px;
+  z-index: 1;
+}
+.nft-attribute-editor > .accordion > .accordion-item > .content > .option-list > .option-list-item > .game-screen {
+  position: absolute;
+  inset: 0;
+}
 .kaia-nft-display > img {
   width: 100%;
   height: 100%;
@@ -451,17 +487,53 @@ dialog.modal.structured-modal > footer {
   grid-template-columns: repeat(auto-fill, minmax(128px, 1fr));
   gap: 13.5px;
 }
+.nft-edit-form {
+  margin: 30px auto;
+  max-width: 1128px;
+  display: flex;
+  background-color: var(--modal-bg-color);
+  border-radius: 8px;
+  overflow: hidden;
+}
+@container (width <= 520px) {
+  .nft-edit-form {
+    flex-direction: column;
+  }
+}
+.nft-edit-form > .nft-player {
+  width: 50%;
+  flex-shrink: 0;
+}
+@container (width <= 520px) {
+  .nft-edit-form > .nft-player {
+    width: 100%;
+  }
+}
+.nft-edit-form > .nft-attribute-editor {
+  width: 50%;
+  flex-shrink: 0;
+  padding: 68px;
+  aspect-ratio: 1;
+  overflow-y: auto;
+}
+@container (width <= 520px) {
+  .nft-edit-form > .nft-attribute-editor {
+    width: 100%;
+    padding: 22px 34px;
+    aspect-ratio: unset;
+    overflow-y: visible;
+  }
+}
 .sigor-sparrow-preview {
   position: relative;
 }
 .sigor-sparrow-preview > .dialogue {
   position: absolute;
-  left: 50%;
-  top: 21%;
-  transform: translate(-50%, -50%);
+  left: 0;
+  width: 100%;
+  text-align: center;
   font-family: neodgm;
   color: #000;
-  font-size: 8px;
 }
 .login-required-view {
   display: flex;

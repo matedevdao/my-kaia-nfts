@@ -1,7 +1,7 @@
 import { el, Router, View } from "@commonmodule/app";
-import { AppCompConfig } from "@commonmodule/app-components";
+import { AppCompConfig, Button } from "@commonmodule/app-components";
 import { KaiaWalletLoginManager } from "kaia-wallet-login-module";
-import { NFTDisplay } from "matedevdao-common";
+import { MDDModuleConfig, NFTDisplay } from "matedevdao-common";
 import NFTData from "matedevdao-common/lib/nft/NFTData.js";
 import Layout from "./Layout.js";
 
@@ -21,7 +21,20 @@ export default class NFTView extends View {
   }
 
   private async renderNFTDisplay(nftData: NFTData) {
-    this.container.append(new NFTDisplay(nftData));
+    this.container.append(
+      el(
+        "header",
+        nftData.holder === KaiaWalletLoginManager.getLoggedInAddress() &&
+          MDDModuleConfig.isEditableNFTCollection(nftData.collection)
+          ? new Button({
+            title: "Edit",
+            onClick: () =>
+              Router.go(`/${nftData.collection}/${nftData.id}/edit`, nftData),
+          })
+          : undefined,
+      ),
+      new NFTDisplay(nftData),
+    );
   }
 
   private async fetchNFTData(collection: string, id: number) {
