@@ -12,7 +12,7 @@ if (location.pathname.includes("/my-kaia-nfts")) {
   Router.prefix = "/my-kaia-nfts";
 }
 
-MDDModuleConfig.init({ appName: "My Kaia NFTs" });
+await MDDModuleConfig.init({ appName: "My Kaia NFTs" });
 
 Router
   .add("/*", Layout, "/loign-required")

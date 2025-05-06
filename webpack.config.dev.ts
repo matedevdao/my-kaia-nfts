@@ -27,6 +27,14 @@ const config: webpack.Configuration = {
         test: /\.ya?ml$/,
         use: "yaml-loader",
       },
+      {
+        test: /\.wasm$/,
+        type: "asset/inline",
+      },
+      {
+        test: /\.(woff|woff2|eot|ttf|otf)$/i,
+        type: "asset/inline",
+      },
     ],
   },
   resolve: {
