@@ -5,18 +5,25 @@ import {
   ConfirmDialog,
 } from "@commonmodule/app-components";
 import { KaiaWalletLoginManager } from "kaia-wallet-login-module";
-import { getNFTEditForm } from "matedevdao-common";
-import NFTData from "matedevdao-common/lib/nft/NFTData.js";
+import {
+  getNFTEditForm,
+  NFTDataWithMeta,
+  NFTEditForm,
+} from "matedevdao-common";
 import Layout from "./Layout.js";
 
 export default class NFTEditView extends View {
-  public changeData(data: { collection: string; id: string } | NFTData): void {
+  private form?: NFTEditForm;
+
+  public changeData(
+    data: { collection: string; id: string } | NFTDataWithMeta,
+  ): void {
     if (!KaiaWalletLoginManager.isLoggedIn()) {
       Router.goWithoutHistory("/loign-required");
     } else {
       Layout.setContent(this.container = el(".nft-edit-view"));
       "name" in data
-        ? this.renderNFTEditForm(data as NFTData)
+        ? this.renderNFTEditForm(data as NFTDataWithMeta)
         : this.fetchNFTData(
           (data as any).collection,
           parseInt((data as any).id),
@@ -24,10 +31,10 @@ export default class NFTEditView extends View {
     }
   }
 
-  private async renderNFTEditForm(nftData: NFTData) {
-    const form = getNFTEditForm(nftData);
+  private async renderNFTEditForm(nftData: NFTDataWithMeta) {
+    this.form = getNFTEditForm(nftData);
     this.container.append(
-      form,
+      this.form,
       new Button({
         title: "저장하기",
         onClick: async () => {
@@ -54,6 +61,22 @@ export default class NFTEditView extends View {
   }
 
   public async saveChanges() {
-    //TODO: Implement saveChanges logic
+    if (this.form) {
+      const data = this.form.getData();
+      const response = await fetch(
+        "https://api.matedevdao.workers.dev/save-metadata",
+        {
+          method: "PUT",
+          headers: {
+            "Content-Type": "application/json",
+            Authorization: `Bearer ${KaiaWalletLoginManager.token}`,
+          },
+          body: JSON.stringify(data),
+        },
+      );
+      if (!response.ok) {
+        alert("Failed to save changes");
+      }
+    }
   }
 }

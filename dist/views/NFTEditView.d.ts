@@ -1,10 +1,11 @@
 import { View } from "@commonmodule/app";
-import NFTData from "matedevdao-common/lib/nft/NFTData.js";
+import { NFTDataWithMeta } from "matedevdao-common";
 export default class NFTEditView extends View {
+    private form?;
     changeData(data: {
         collection: string;
         id: string;
-    } | NFTData): void;
+    } | NFTDataWithMeta): void;
     private renderNFTEditForm;
     private fetchNFTData;
     saveChanges(): Promise<void>;
