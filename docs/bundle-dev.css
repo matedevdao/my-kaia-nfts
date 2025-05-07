@@ -500,14 +500,17 @@ dialog.modal.structured-modal > footer {
     flex-direction: column;
   }
 }
-.nft-edit-form > .nft-player {
+.nft-edit-form > main {
   width: 50%;
   flex-shrink: 0;
 }
 @container (width <= 520px) {
-  .nft-edit-form > .nft-player {
+  .nft-edit-form > main {
     width: 100%;
   }
+}
+.nft-edit-form > main > .player-container {
+  overflow: hidden;
 }
 .nft-edit-form > .nft-attribute-editor {
   width: 50%;
