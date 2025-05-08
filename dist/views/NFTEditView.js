@@ -41,21 +41,30 @@ export default class NFTEditView extends View {
     async saveChanges() {
         if (this.form) {
             const data = this.form.getData();
-            const response = await fetch("https://api.matedevdao.workers.dev/save-metadata", {
-                method: "PUT",
-                headers: {
-                    "Content-Type": "application/json",
-                    Authorization: `Bearer ${KaiaWalletLoginManager.token}`,
-                },
-                body: JSON.stringify({
-                    collection: this.currentData?.collection,
-                    id: this.currentData?.id,
-                    traits: data.traits,
-                    parts: data.parts,
-                }),
-            });
-            if (!response.ok) {
-                alert("Failed to save changes");
+            try {
+                await fetch("https://api.matedevdao.workers.dev/save-metadata", {
+                    method: "PUT",
+                    headers: {
+                        "Content-Type": "application/json",
+                        Authorization: `Bearer ${KaiaWalletLoginManager.token}`,
+                    },
+                    body: JSON.stringify({
+                        collection: this.currentData?.collection,
+                        id: this.currentData?.id,
+                        traits: data.traits,
+                        parts: data.parts,
+                    }),
+                });
+            }
+            catch (error) {
+                console.error("Error saving changes:", error);
+                new ConfirmDialog({
+                    title: "Error",
+                    message: "Failed to save changes. Would you like to try again?",
+                    confirmButtonTitle: "Retry",
+                    onConfirm: () => this.saveChanges(),
+                });
+                return;
             }
         }
     }
