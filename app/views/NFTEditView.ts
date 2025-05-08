@@ -13,11 +13,14 @@ import {
 import Layout from "./Layout.js";
 
 export default class NFTEditView extends View {
+  private currentData?: { collection: string; id: string };
   private form?: NFTEditForm;
 
   public changeData(
     data: { collection: string; id: string } | NFTDataWithMeta,
   ): void {
+    this.currentData = data as { collection: string; id: string };
+
     if (!KaiaWalletLoginManager.isLoggedIn()) {
       Router.goWithoutHistory("/loign-required");
     } else {
@@ -71,7 +74,12 @@ export default class NFTEditView extends View {
             "Content-Type": "application/json",
             Authorization: `Bearer ${KaiaWalletLoginManager.token}`,
           },
-          body: JSON.stringify(data),
+          body: JSON.stringify({
+            collection: this.currentData?.collection,
+            id: this.currentData?.id,
+            traits: data.traits,
+            parts: data.parts,
+          }),
         },
       );
       if (!response.ok) {

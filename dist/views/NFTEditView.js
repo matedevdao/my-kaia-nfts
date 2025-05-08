@@ -4,8 +4,10 @@ import { KaiaWalletLoginManager } from "kaia-wallet-login-module";
 import { getNFTEditForm, } from "matedevdao-common";
 import Layout from "./Layout.js";
 export default class NFTEditView extends View {
+    currentData;
     form;
     changeData(data) {
+        this.currentData = data;
         if (!KaiaWalletLoginManager.isLoggedIn()) {
             Router.goWithoutHistory("/loign-required");
         }
@@ -45,7 +47,12 @@ export default class NFTEditView extends View {
                     "Content-Type": "application/json",
                     Authorization: `Bearer ${KaiaWalletLoginManager.token}`,
                 },
-                body: JSON.stringify(data),
+                body: JSON.stringify({
+                    collection: this.currentData?.collection,
+                    id: this.currentData?.id,
+                    traits: data.traits,
+                    parts: data.parts,
+                }),
             });
             if (!response.ok) {
                 alert("Failed to save changes");

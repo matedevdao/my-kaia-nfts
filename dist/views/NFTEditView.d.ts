@@ -1,6 +1,7 @@
 import { View } from "@commonmodule/app";
 import { NFTDataWithMeta } from "matedevdao-common";
 export default class NFTEditView extends View {
+    private currentData?;
     private form?;
     changeData(data: {
         collection: string;
