@@ -1,4 +1,4 @@
-import { BodyNode, el, Router, View } from "@commonmodule/app";
+import { AppRoot, el, Router, View } from "@commonmodule/app";
 import { Button, ButtonType } from "@commonmodule/app-components";
 import { KaiaWalletLoginManager } from "kaia-wallet-login-module";
 
@@ -17,7 +17,7 @@ export default class LoginRequiredView extends View {
           Router.go("/");
         },
       }),
-    ).appendTo(BodyNode);
+    ).appendTo(AppRoot);
 
     if (KaiaWalletLoginManager.isLoggedIn()) Router.goWithoutHistory("/");
   }

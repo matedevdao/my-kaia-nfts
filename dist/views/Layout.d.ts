@@ -1,7 +1,7 @@
-import { DomNode, View } from "@commonmodule/app";
+import { Dom, View } from "@commonmodule/app";
 export default class Layout extends View {
     private static _current;
-    static setContent(content: DomNode): void;
+    static setContent(content: Dom): void;
     private contentContainer;
     constructor();
 }

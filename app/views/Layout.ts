@@ -1,15 +1,15 @@
-import { BodyNode, DomNode, el, Router, View } from "@commonmodule/app";
+import { AppRoot, Dom, el, Router, View } from "@commonmodule/app";
 import { LoggedInUserAvatarButton } from "@commonmodule/social-components";
 import { KaiaWalletLoginManager } from "kaia-wallet-login-module";
 
 export default class Layout extends View {
   private static _current: Layout;
 
-  public static setContent(content: DomNode) {
+  public static setContent(content: Dom) {
     Layout._current.contentContainer.append(content);
   }
 
-  private contentContainer: DomNode;
+  private contentContainer: Dom;
 
   constructor() {
     super();
@@ -26,6 +26,6 @@ export default class Layout extends View {
         ),
       ),
       this.contentContainer = el("main"),
-    ).appendTo(BodyNode);
+    ).appendTo(AppRoot);
   }
 }

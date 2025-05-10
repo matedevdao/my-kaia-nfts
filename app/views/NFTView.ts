@@ -1,26 +1,28 @@
 import { el, Router, View } from "@commonmodule/app";
 import { AppCompConfig, Button } from "@commonmodule/app-components";
 import { KaiaWalletLoginManager } from "kaia-wallet-login-module";
-import { MDDModuleConfig, NFTDisplay } from "matedevdao-common";
-import NFTData from "matedevdao-common/lib/nft/NFTData.js";
+import {
+  MDDModuleConfig,
+  NFTDataWithMeta,
+  NFTDisplay,
+} from "matedevdao-common";
 import Layout from "./Layout.js";
 
 export default class NFTView extends View {
-  public changeData(data: { collection: string; id: string } | NFTData): void {
+  public changeData(
+    data: { collection: string; id: string } | NFTDataWithMeta,
+  ): void {
     if (!KaiaWalletLoginManager.isLoggedIn()) {
       Router.goWithoutHistory("/loign-required");
     } else {
       Layout.setContent(this.container = el(".nft-view"));
       "name" in data
-        ? this.renderNFTDisplay(data as NFTData)
-        : this.fetchNFTData(
-          (data as any).collection,
-          parseInt((data as any).id),
-        );
+        ? this.renderNFTDisplay(data)
+        : this.fetchNFTData(data.collection, parseInt(data.id));
     }
   }
 
-  private async renderNFTDisplay(nftData: NFTData) {
+  private async renderNFTDisplay(nftData: NFTDataWithMeta) {
     this.container.append(
       el(
         "header",

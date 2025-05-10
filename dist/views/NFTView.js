@@ -1,7 +1,7 @@
 import { el, Router, View } from "@commonmodule/app";
 import { AppCompConfig, Button } from "@commonmodule/app-components";
 import { KaiaWalletLoginManager } from "kaia-wallet-login-module";
-import { MDDModuleConfig, NFTDisplay } from "matedevdao-common";
+import { MDDModuleConfig, NFTDisplay, } from "matedevdao-common";
 import Layout from "./Layout.js";
 export default class NFTView extends View {
     changeData(data) {

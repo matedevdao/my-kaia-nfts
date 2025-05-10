@@ -6,7 +6,7 @@
   },
   "type": "module",
   "dependencies": {
-    "matedevdao-common": "^0.0.2"
+    "matedevdao-common": "^0.0.4"
   },
   "devDependencies": {
     "@commonmodule/static-site-generator": "^0.0.5",
