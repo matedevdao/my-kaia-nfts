@@ -13,7 +13,7 @@ export default class NFTView extends View {
     data: { collection: string; id: string } | NFTDataWithMeta,
   ): void {
     if (!KaiaWalletLoginManager.isLoggedIn()) {
-      Router.goWithoutHistory("/loign-required");
+      Router.goWithoutHistory("/login-required");
     } else {
       Layout.setContent(this.container = el(".nft-view"));
       "name" in data

@@ -6,7 +6,7 @@ import Layout from "./Layout.js";
 export default class NFTView extends View {
     changeData(data) {
         if (!KaiaWalletLoginManager.isLoggedIn()) {
-            Router.goWithoutHistory("/loign-required");
+            Router.goWithoutHistory("/login-required");
         }
         else {
             Layout.setContent(this.container = el(".nft-view"));

@@ -1,4 +1,5 @@
 import { Router, SPAInitializer } from "@commonmodule/app";
+import { KaiaWalletLoginManager } from "kaia-wallet-login-module";
 import { MDDModuleConfig } from "matedevdao-common";
 import HomeView from "./views/HomeView.js";
 import Layout from "./views/Layout.js";
@@ -15,8 +16,12 @@ if (location.pathname.includes("/my-kaia-nfts")) {
 await MDDModuleConfig.init({ appName: "My Kaia NFTs" });
 
 Router
-  .add("/*", Layout, "/loign-required")
+  .add("/*", Layout, "/login-required")
   .add("/", HomeView)
   .add("/:collection/:id", NFTView)
   .add("/:collection/:id/edit", NFTEditView)
-  .add("/loign-required", LoginRequiredView);
+  .add("/login-required", LoginRequiredView);
+
+KaiaWalletLoginManager.on("loginStatusChanged", (loggedIn) => {
+  loggedIn ? Router.go("/") : Router.go("/login-required");
+});

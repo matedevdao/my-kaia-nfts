@@ -9,7 +9,7 @@ export default class NFTEditView extends View {
     changeData(data) {
         this.currentData = data;
         if (!KaiaWalletLoginManager.isLoggedIn()) {
-            Router.goWithoutHistory("/loign-required");
+            Router.goWithoutHistory("/login-required");
         }
         else {
             Layout.setContent(this.container = el(".nft-edit-view"));

@@ -12,10 +12,7 @@ export default class LoginRequiredView extends View {
       new Button({
         type: ButtonType.Contained,
         title: "지갑 로그인",
-        onClick: async () => {
-          await KaiaWalletLoginManager.login();
-          Router.go("/");
-        },
+        onClick: () => KaiaWalletLoginManager.login(),
       }),
     ).appendTo(AppRoot);
 

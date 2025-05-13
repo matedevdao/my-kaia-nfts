@@ -7,7 +7,7 @@ export default class HomeView extends View {
   constructor() {
     super();
     if (!KaiaWalletLoginManager.isLoggedIn()) {
-      Router.goWithoutHistory("/loign-required");
+      Router.goWithoutHistory("/login-required");
     } else {
       const nftList = new HoldingNFTList(
         KaiaWalletLoginManager.getLoggedInAddress()!,
