@@ -18,6 +18,6 @@ Router
     .add("/:collection/:id/edit", NFTEditView)
     .add("/login-required", LoginRequiredView);
 KaiaWalletLoginManager.on("loginStatusChanged", (loggedIn) => {
-    loggedIn ? Router.go("/") : Router.go("/login-required");
+    Router.go(loggedIn ? "/" : "/login-required");
 });
 //# sourceMappingURL=main.js.map

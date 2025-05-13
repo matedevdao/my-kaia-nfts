@@ -471,6 +471,7 @@ dialog.modal {
   color: var(--paragraph-text-color);
   animation: fade-in 0.3s ease-out;
   container-type: inline-size;
+  border: none;
 }
 dialog.modal::backdrop {
   backdrop-filter: blur(50px);
