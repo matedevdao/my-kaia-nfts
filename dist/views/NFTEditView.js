@@ -22,7 +22,7 @@ export default class NFTEditView extends View {
         this.form = getNFTEditForm(nftData);
         this.container.append(this.form, new Button({
             title: "저장하기",
-            onClick: async () => {
+            onPress: async () => {
                 await new ConfirmDialog({
                     title: "저장하기",
                     message: "변경사항을 저장하시겠습니까?",

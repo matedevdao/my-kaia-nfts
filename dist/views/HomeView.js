@@ -10,7 +10,7 @@ export default class HomeView extends View {
         }
         else {
             const nftList = new HoldingNFTList(KaiaWalletLoginManager.getLoggedInAddress());
-            nftList.on("selectNFT", (nftData) => Router.go(`/${nftData.collection}/${nftData.id}`, nftData));
+            nftList.on("nftSelected", (nftData) => Router.go(`/${nftData.collection}/${nftData.id}`, nftData));
             Layout.setContent(this.container = el(".home-view", nftList));
         }
     }

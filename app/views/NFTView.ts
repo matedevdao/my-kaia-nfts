@@ -30,7 +30,7 @@ export default class NFTView extends View {
           MDDModuleConfig.isEditableNFTCollection(nftData.collection)
           ? new Button({
             title: "Edit",
-            onClick: () =>
+            onPress: () =>
               Router.go(`/${nftData.collection}/${nftData.id}/edit`, nftData),
           })
           : undefined,

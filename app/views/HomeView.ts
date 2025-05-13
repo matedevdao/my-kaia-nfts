@@ -13,7 +13,7 @@ export default class HomeView extends View {
         KaiaWalletLoginManager.getLoggedInAddress()!,
       );
       nftList.on(
-        "selectNFT",
+        "nftSelected",
         (nftData) => Router.go(`/${nftData.collection}/${nftData.id}`, nftData),
       );
       Layout.setContent(this.container = el(".home-view", nftList));
